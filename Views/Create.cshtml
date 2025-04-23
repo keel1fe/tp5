@@ -1,0 +1,59 @@
+﻿@model tp5.Models.Predmet
+@{
+    ViewData["Title"] = Model.CourseId == 0 ? "Создать курс" : "Редактировать курс";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="@(Model.CourseId == 0 ? "Create" : "Edit")">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    @if (Model.CourseId != 0)
+    {
+        <input type="hidden" asp-for="CourseId" />
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseName)
+        @Html.EditorFor(m => m.CourseName, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="CourseName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description)
+        @Html.EditorFor(m => m.Description, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartDate)
+        @Html.EditorFor(m => m.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.EndDate)
+        @Html.EditorFor(m => m.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Instructor)
+        @Html.EditorFor(m => m.Instructor, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="Instructor" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.InstructorPhone)
+        @Html.EditorFor(m => m.InstructorPhone, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="InstructorPhone" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Сохранить" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Назад к списку</a>
+</div>

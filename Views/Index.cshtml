@@ -1,0 +1,33 @@
+﻿@model List<tp5.Models.Predmet>
+@using tp5.Controllers
+
+@{
+    ViewData["Title"] = "Список курсов";
+}
+
+<h2>Список курсов</h2>
+
+<p>
+    <a asp-action="Create">Создать новый курс</a>
+</p>
+
+@if (TempData["UseExternalHelper"] != null && (bool)TempData["UseExternalHelper"])
+{
+    @DatabaseCourseController.ExternalCoursesHelper(Html, Model)
+}
+else
+{
+    <div>
+        @{
+            int i = 0;
+            while (i < Model.Count)
+            {
+                <div class="course-item">
+                    @Html.LabelForModel()
+                    @Html.DisplayForModel(Model[i])
+                </div>
+                i++;
+            }
+        }
+    </div>
+}

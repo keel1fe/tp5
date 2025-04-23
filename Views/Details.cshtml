@@ -1,0 +1,18 @@
+﻿@model tp5.Models.Predmet
+
+@{
+    ViewData["Title"] = "Детали курса";
+}
+
+<h2>Детали курса</h2>
+
+<div>
+    @Html.LabelForModel()
+    <hr />
+    @Html.DisplayForModel()
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CourseId">Редактировать</a> |
+    <a asp-action="Index">Назад к списку</a>
+</div>
