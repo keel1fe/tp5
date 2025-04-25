@@ -1,0 +1,81 @@
+﻿@model tp5.Models.Dance
+
+@{
+    ViewData["Title"] = "Добавить новое направление";
+}
+
+<div class="container">
+    <h2 class="mb-4">@ViewData["Title"]</h2>
+
+    <form asp-action="Create" class="needs-validation" novalidate>
+        <div class="row">
+            <!-- Левая колонка -->
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label asp-for="FIO" class="form-label">ФИО ребенка*</label>
+                    <input asp-for="FIO" class="form-control" required />
+                    <span asp-validation-for="FIO" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Age" class="form-label">Возраст ребенка*</label>
+                    <input asp-for="Age" type="number" class="form-control" required />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="StyleDance" class="form-label">Стиль танца*</label>
+                    <input asp-for="StyleDance" class="form-control" required />
+                    <span asp-validation-for="StyleDance" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Правая колонка -->
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label asp-for="StartDate" class="form-label">Дата начала занятий*</label>
+                    <input asp-for="StartDate" type="datetime-local" class="form-control" required />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ParentPhone" class="form-label">Телефон родителя*</label>
+                    <input asp-for="ParentPhone" type="tel" class="form-control" required />
+                    <span asp-validation-for="ParentPhone" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-save"></i> Сохранить
+            </button>
+
+            <a href="@Url.Action("Index", "Dance")"
+               class="btn btn-primary"
+               id="backToListBtn">
+                <i class="fas fa-list"></i> К списку
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        // Валидация формы на клиенте
+        (function () {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+}

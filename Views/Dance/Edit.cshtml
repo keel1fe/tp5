@@ -1,0 +1,56 @@
+﻿@model tp5.Models.Dance
+
+@{
+    ViewData["Title"] = Model.CourseId == 0 ? "Создать новое направление" : "Редактировать стиль танцев";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    @if (Model.CourseId != 0)
+    {
+        <input type="hidden" asp-for="CourseId" />
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DancerId)
+        @Html.EditorFor(m => m.DancerId, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="DancerId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FIO)
+        @Html.EditorFor(m => m.FIO, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="FIO" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Age)
+        @Html.EditorFor(m => m.Age, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartDate)
+        @Html.EditorFor(m => m.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Money)
+        @Html.EditorFor(m => m.Money, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="Money" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ParentPhone)
+        @Html.EditorFor(m => m.ParentPhone, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="ParentPhone" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Index" class="btn btn-secondary">Назад</a>
+</form>
+

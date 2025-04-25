@@ -3,28 +3,34 @@ using System.ComponentModel;
 
 namespace tp5.Models
 {
-    public class Predmet
+    public class Dance
     {
-        [DisplayName("ID курса")]
+        [DisplayName("ID занятий")]
         public int CourseId { get; set; }
 
-        [DisplayName("Название курса")]
-        public string CourseName { get; set; }
+        [DisplayName("ID танцора")]
+        public int DancerId { get; set; }
 
-        [DisplayName("Описание курса")]
-        public string Description { get; set; }
+        [DisplayName("ФИО")]
+        [Required(ErrorMessage = "Поле ФИО обязательно для заполнения")]
+        public string FIO { get; set; }
 
-        [DisplayName("Дата начала")]  
+        [DisplayName("Возраст")]
+        public int Age { get; set; }
+
+        [DisplayName("Стиль танца")]
+        public string StyleDance { get; set; }
+
+        [DisplayName("Время занятий")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
         public DateTime StartDate { get; set; }
 
-        [DisplayName("Дата окончания")]
-        public string EndDate { get; set; }
+        [DisplayName("Денежные сборы")]
+        public decimal Money { get; set; }
 
-        [DisplayName("Преподаватель")]
-        public string Instructor { get; set; }
-
-        [DisplayName("Телефон преподавателя")]
+        [DisplayName("Телефон родителя")]
         [DataType(DataType.PhoneNumber)]
-        public string InstructorPhone { get; set; }
+        public string ParentPhone { get; set; }
     }
 }

@@ -1,0 +1,22 @@
+﻿@model tp5.Models.Dance
+
+@{
+    ViewData["Title"] = "Детали направления танцев";
+}
+
+<h2>Детали направления танцев</h2>
+
+<div>
+    @Html.LabelForModel()
+    <hr />
+    @Html.DisplayForModel()
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CourseId">Редактировать</a> |
+    <a href="@Url.Action("Index", "Dance")"
+       class="btn btn-primary"
+       id="backToListBtn">
+        <i class="fas fa-list"></i> К списку
+    </a>
+</div>
